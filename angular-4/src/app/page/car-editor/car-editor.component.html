@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
-      <form *ngIf="car$ | async as car">
+      <form #carForm="ngForm"> *ngIf="car$ | async as car">
         <div class="form-group">
           <label class="form-control" for="id">id</label>
           <input [(ngModel)]="car.id" class="form-control" type="hidden" name="id" id="id">
@@ -23,17 +23,19 @@
         </div>
         <div class="form-group">
           <label class="form-control" for="price">price</label>
-          <input [(ngModel)]="car.price" class="form-control" type="text" name="price" id="price">
+          <input required pattern="^[\d]{3,5}$" [(ngModel)]="car.price" class="form-control" type="number" name="price"
+            id="price">
         </div>
         <div class="form-group">
-          <label class="form-control" for="id">id</label>
-          <input [(ngModel)]="car.id" class="form-control" type="text" name="id" id="id">
+          <label class="form-control" for="stock">stock</label>
+          <input required pattern="^(\d|[1-4][0-9]|50)$" [(ngModel)]="car.stock" class="form-control" type="number"
+            name="stock" id="stock">
         </div>
         <div class="form-group">
-          <label class="form-control" for="id">id</label>
-          <input [(ngModel)]="car.id" class="form-control" type="text" name="id" id="id">
+          <label class="form-control" for="active">active</label>
+          <input [(ngModel)]="car.active" class="form-control" type="text" name="active" id="active">
         </div>
-
+        <button [disabled]="carForm.invalid" class="btn btn-success"></button>
       </form>
     </div>
   </div>
