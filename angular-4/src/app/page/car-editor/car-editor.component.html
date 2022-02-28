@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
-      <form #carForm="ngForm"> *ngIf="car$ | async as car">
+      <form #carForm="ngForm" *ngIf="car$ | async as car">
         <div class="form-group">
           <label class="form-control" for="id">id</label>
           <input [(ngModel)]="car.id" class="form-control" type="hidden" name="id" id="id">
@@ -35,7 +35,7 @@
           <label class="form-control" for="active">active</label>
           <input [(ngModel)]="car.active" class="form-control" type="text" name="active" id="active">
         </div>
-        <button [disabled]="carForm.invalid" class="btn btn-success"></button>
+        <button (click)="onUpdate(car)" [disabled]="carForm.invalid" class="btn btn-success">Save</button>
       </form>
     </div>
   </div>
