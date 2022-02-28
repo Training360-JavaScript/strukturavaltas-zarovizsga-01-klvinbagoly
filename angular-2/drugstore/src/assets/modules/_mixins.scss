@@ -5,4 +5,12 @@
   @media (max-width: 599px) {
     @content
   }
-};
+}
+
+;
+
+@mixin hover-bg($color) {
+  &:hover {
+    background-color: $color;
+  }
+}
